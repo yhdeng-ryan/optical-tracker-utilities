@@ -163,7 +163,7 @@ class ROMHeader(Struct):
     p2 = Field(Constant([0, 0, 1, 0, 0, 0]))
     tool_sub_type = Field(Enum(tool_sub_types, 2))
     p3 = Field(Padding(2))
-    tool_main_type = Field(Enum(tool_main_types, 0))
+    tool_main_type = Field(Enum(tool_main_types, 1))
     tool_revision = Field(UInt16)
     p4 = Field(Padding(2))
 

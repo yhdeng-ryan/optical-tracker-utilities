@@ -188,7 +188,7 @@ if __name__ == "__main__":
         help="number of markers on the tool. Used to filter messages with incorrect number of markers",
     )
     parser.add_argument(
-        "-o", "--output", type=str, required=True, help="output file name"
+        "-o", "--output", type=str, required=True, help="output file name, doesn't support .rom file (use tool_converter.py to convert)"
     )
 
     # optional arguments

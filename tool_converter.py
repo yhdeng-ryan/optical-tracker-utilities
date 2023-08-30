@@ -111,15 +111,16 @@ def read_rom(file_name: str) -> SAWToolDefinition:
     return saw_tool
 
 
-def write_rom(tool: SAWToolDefinition, file_name: str):
+def write_rom(tool_saw: SAWToolDefinition, file_name: str, part_number: str):
     tool = ndi_tool.NDIToolDefinition()
     tool.header.date = datetime.date.today()
-    tool.geometry.markers = tool.markers
-    if tool.pivot is not None:
+    tool.tool_details.part_number = part_number
+    tool.geometry.markers = tool_saw.markers
+    if tool_saw.pivot is not None:
         print(
             "NOTE: NDI .rom format doesn't support pivot, centering coordinate system on pivot instead"
         )
-        tool.geometry.markers -= tool.pivot
+        tool.geometry.markers -= tool_saw.pivot
 
     with open(file_name, "wb") as f:
         data = ndi_tool.NDIToolDefinition.encode(tool)
@@ -159,6 +160,7 @@ if __name__ == "__main__":
 
     parser.add_argument("-i", "--input", type=str, help="Input file")
     parser.add_argument("-o", "--output", type=str, default="", help="Output file")
+    parser.add_argument("-p", "--part_number", type=str, help="ASCII string, Max length 20 characters")
     args = parser.parse_args()
 
     input_extension = pathlib.Path(args.input).suffix
@@ -178,7 +180,7 @@ if __name__ == "__main__":
     if args.output == "":
         print(json.dumps(tool.to_json(), indent=4, default=str))
     elif output_extension == ".rom":
-        write_rom(tool, args.output)
+        write_rom(tool, args.output, args.part_number)
     elif output_extension == ".json":
         write_saw(tool, args.output)
     elif output_extension == ".ini":
