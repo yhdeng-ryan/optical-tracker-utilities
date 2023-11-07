@@ -1,3 +1,5 @@
+# Additional Info
+
 # Optical Tracker Utilities
 
 Scripts used to generate tool definition files (i.e. relative positions of stray markers within a single rigid body) for optical trackers.  These scripts have been developped at the Johns Hopkins University and tested with the following optical tracking systems:
