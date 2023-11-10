@@ -1,0 +1,14 @@
+{
+    "tools":
+    [
+        {
+            "name": "Galen_EE",
+            "json-file": "geometry_galen_ee.json"
+        }
+        ,
+        {
+            "name": "Galen_Ref",
+            "json-file": "geometry_galen_reference.json"
+        }
+    ]
+}
