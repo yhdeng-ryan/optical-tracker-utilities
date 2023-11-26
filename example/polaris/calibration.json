@@ -1,0 +1,22 @@
+/* -*- Mode: Javascript; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
+{
+    "serial-port": "/dev/ttyUSB0",
+    "definition-path": ["~/catkin_ws/src/cisst-saw/sawNDITracker/share"],
+    "name": "Polaris",
+     "stray-markers": {
+         "track": true
+     }
+     ,
+
+    "tools": [
+        {
+            "name":"rf", "unique-id":"01-3DCC8C00-RFMarkers", 		
+            "definition":"rf.rom", "reference": "Polaris"
+        },
+        {
+            "name":"ee", "unique-id":"01-3DCC8C00-EEMarkers", 		
+            "definition":"ee.rom", "reference": "rf"
+        }
+    ]
+}
+
